@@ -2,9 +2,15 @@
 
 > A Gradio-based demonstration for the Qwen/Qwen3-TTS-12Hz models using Daggr for modular UI nodes. Supports voice design (prompt-to-speech), voice cloning (zero-shot), and custom voice synthesis with multiple speakers and languages. Features lazy model loading to optimize memory, multi-model sizes (0.6B and 1.7B), and support for various audio inputs.
 
-https://github.com/user-attachments/assets/8bc46f5d-e09c-4077-91c4-a1970697cb64
-https://github.com/user-attachments/assets/51e0236d-b0d6-47f0-9829-99fcccde4d1c
-https://github.com/user-attachments/assets/2246d4c7-3f5c-49b8-a177-4bd5305eca48
+
+https://github.com/user-attachments/assets/c7a0ed1e-827c-4ca7-8abc-b24c0bd83cf1
+
+
+https://github.com/user-attachments/assets/69490c35-a0e5-48c1-9e2c-93add26b0764
+
+
+https://github.com/user-attachments/assets/90b6ed75-ea5c-4a10-a059-d73431ee3793
+
 
 ## Features
 - **Modular UI with Daggr**: Three independent nodes for Voice Design, Voice Clone, and Custom Voice, allowing parallel or sequential workflows.
