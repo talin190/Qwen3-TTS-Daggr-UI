@@ -60,22 +60,22 @@ https://github.com/user-attachments/assets/8d847e8b-1d0b-4752-912b-470dd3591154
    ```
    **requirements.txt content:**
    ```
-    daggr==0.5.2
-    torch
     transformers==4.57.3
     accelerate==1.12.0
-    einops
-    gradio #gradio@6
-    librosa
+    soynlp==0.0.493
+    nagisa==0.2.11
+    daggr==0.7.0
+    onnxruntime
     torchaudio
     soundfile
-    sox
-    nagisa==0.2.11
-    soynlp==0.0.493
-    onnxruntime
+    librosa
+    einops
+    gradio #gradio@6
     scipy
     torch
     numpy
+    torch
+    sox
    ```
 3. Set Hugging Face token (if required):
    ```
