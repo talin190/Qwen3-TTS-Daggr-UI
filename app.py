@@ -7,6 +7,8 @@ import torch
 import torchaudio
 import soundfile as sf
 import gradio as gr
+import tempfile
+import uuid
 from typing import Any, Dict, List, Optional, Tuple, Union
 from huggingface_hub import snapshot_download, login
 
@@ -127,6 +129,16 @@ def _normalize_audio(wav, eps=1e-12, clip=True):
         
     return y
 
+def save_audio_to_temp(sr: int, audio_data: np.ndarray) -> str:
+    """
+    Saves audio numpy array to a temporary WAV file and returns the path.
+    This fixes the 'ndarray is not JSON serializable' error.
+    """
+    filename = f"{uuid.uuid4()}.wav"
+    path = os.path.join(tempfile.gettempdir(), filename)
+    sf.write(path, audio_data, sr)
+    return path
+
 def process_audio_input(audio_input):
     """
     Handles Filepaths, Data URIs (base64), and Numpy arrays.
@@ -194,7 +206,9 @@ def run_voice_design(text, language, voice_description):
             non_streaming_mode=True,
             max_new_tokens=2048,
         )
-        return (sr, wavs[0]), "Success"
+        # Fix: Save to file instead of returning numpy array directly
+        output_path = save_audio_to_temp(sr, wavs[0])
+        return output_path, "Success"
     except Exception as e:
         return None, f"Error: {str(e)}"
 
@@ -224,7 +238,9 @@ def run_voice_clone(ref_audio, ref_text, target_text, language, use_xvector_only
             x_vector_only_mode=use_xvector_only,
             max_new_tokens=2048,
         )
-        return (sr, wavs[0]), "Success"
+        # Fix: Save to file instead of returning numpy array directly
+        output_path = save_audio_to_temp(sr, wavs[0])
+        return output_path, "Success"
     except Exception as e:
         return None, f"Error: {str(e)}"
 
@@ -246,7 +262,9 @@ def run_custom_voice(text, language, speaker, instruct, model_size):
             non_streaming_mode=True,
             max_new_tokens=2048,
         )
-        return (sr, wavs[0]), "Success"
+        # Fix: Save to file instead of returning numpy array directly
+        output_path = save_audio_to_temp(sr, wavs[0])
+        return output_path, "Success"
     except Exception as e:
         return None, f"Error: {str(e)}"
 
@@ -309,7 +327,8 @@ voice_design_node = FnNode(
         ),
     },
     outputs={
-        "generated_audio": gr.Audio(label="Generated Audio", type="numpy"),
+        # Changed type to filepath to be safe, though not strictly required if function returns path
+        "generated_audio": gr.Audio(label="Generated Audio", type="filepath"), 
         "status": gr.Textbox(label="Status", interactive=False),
     },
     name="Voice Design"
@@ -329,7 +348,7 @@ custom_voice_node = FnNode(
         "model_size": gr.Dropdown(label="Model Size (Custom Voice)", choices=MODEL_SIZES, value="1.7B"),
     },
     outputs={
-        "tts_audio": gr.Audio(label="Generated Audio", type="numpy"),
+        "tts_audio": gr.Audio(label="Generated Audio", type="filepath"),
         "status": gr.Textbox(label="Status", interactive=False),
     },
     name="Custom Voice"
@@ -346,7 +365,7 @@ voice_clone_node = FnNode(
         "model_size": gr.Dropdown(label="Model Size (Voice Clone)", choices=MODEL_SIZES, value="1.7B"),
     },
     outputs={
-        "cloned_audio": gr.Audio(label="Cloned Audio", type="numpy"),
+        "cloned_audio": gr.Audio(label="Cloned Audio", type="filepath"),
         "status": gr.Textbox(label="Status", interactive=False),
     },
     name="Voice Clone"
@@ -355,13 +374,13 @@ voice_clone_node = FnNode(
 asr_node = FnNode(
     fn=run_asr,
     inputs={
-        "audio_upload": gr.Audio(label="Upload Audio (Qwen3 ASR)", type="numpy", sources=["upload", "microphone"]),
+        "audio_upload": gr.Audio(label="Upload Audio (Qwen3 ASR)", type="filepath", sources=["upload", "microphone"]),
         "lang_disp": gr.Dropdown(label="Language (Qwen3 ASR)", choices=ASR_LANG_CHOICES, value="Auto"),
     },
     outputs={
         "detected_lang": gr.Textbox(label="Detected Language", interactive=False),
         "transcription": gr.Textbox(label="Transcription Result", lines=6, interactive=True),
-        "status": gr.Textbox(label="Status", interactive=False),
+        "status": gr.Textbox(label="Status", interactive=True),
     },
     name="Qwen3 ASR"
 )
