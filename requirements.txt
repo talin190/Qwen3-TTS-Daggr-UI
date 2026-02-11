@@ -1,18 +1,16 @@
-daggr==0.7.0
-torch
 transformers==4.57.3
 accelerate==1.12.0
-einops
-gradio #gradio@6
-librosa
+soynlp==0.0.493
+nagisa==0.2.11
+daggr==0.7.0
+onnxruntime
 torchaudio
 soundfile
-sox
-nagisa==0.2.11
-soynlp==0.0.493
-onnxruntime
+librosa
+einops
+gradio #gradio@6
 scipy
 torch
 numpy
-
-
+torch
+sox
